@@ -69,13 +69,50 @@ function getWeekDay(date) {
     return result_table[result]
 }
 
+function lerpColors(from, to, amount) {
+    let nFrom = hexColorToInt(from);
+    let nTo = hexColorToInt(to);
+    const ar = (nFrom & 0xFF0000) >> 16,
+          ag = (nFrom & 0x00FF00) >> 8,
+          ab = (nFrom & 0x0000FF),
+
+          br = (nTo & 0xFF0000) >> 16,
+          bg = (nTo & 0x00FF00) >> 8,
+          bb = (nTo & 0x0000FF),
+
+          rr = ar + amount * (br - ar),
+          rg = ag + amount * (bg - ag),
+          rb = ab + amount * (bb - ab);
+
+    return `#${((rr << 16) + (rg << 8) + (rb | 0)).toString(16).padStart(6, '0').slice(-6)}`
+};
+
+function hexColorToInt(hex) {
+    return parseInt(hex.replace('#', '0x'))
+}
+
+function flashBackground(color) {
+    let backgroundElem = document.getElementsByTagName("html")[0];
+    let x = 0;
+    let intervalID = setInterval(function () {
+        backgroundElem.style.background = lerpColors(color, "#f4decb", x * 0.01);
+        if (++x === 100) {
+            window.clearInterval(intervalID);
+        }
+    }, 1);
+    backgroundElem.style.background = "#f4decb";
+}
+
 function submit() {
+    Array.from(document.getElementsByClassName("button-group")[0].children).forEach((child) => {
+        child.style = '';
+    })
     if (selection == getWeekDay(date)) {
-        console.log("correct")
+        flashBackground("#10c47f");
         setDate();
     }
     else {
-        console.log("incorrect")
+        flashBackground("#eb635b");
     }
 }
 
