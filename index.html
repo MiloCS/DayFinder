@@ -11,19 +11,38 @@
     <p class="intro">What day of the week is:</p>
     <h1 class="date">January 17th, 2079</h1>
     <div class="button-group">
-        <button class="button monday">Monday</button>
-        <button class="button tuesday">Tuesday</button>
-        <button class="button wednesday">Wednesday</button>
-        <button class="button thursday">Thursday</button>
-        <button class="button friday">Friday</button>
-        <button class="button saturday">Saturday</button>
-        <button class="button sunday">Sunday</button>
+        <button data-day="monday">Monday</button>
+        <button data-day="tuesday">Tuesday</button>
+        <button data-day="wednesday">Wednesday</button>
+        <button data-day="thursday">Thursday</button>
+        <button data-day="friday">Friday</button>
+        <button data-day="saturday">Saturday</button>
+        <button data-day="sunday">Sunday</button>
     </div>
     <div class="submit-group">
         <br>
-        <button>Submit</button>
+        <button onclick="submit()">Submit</button>
         &nbsp;
-        <button>How do I do this?</button>
+        <button id="open-modal">How do I do this?</button>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>How to figure out any day of the week in your head</h2>
+            <ol>
+                <li>Take the last two digits of the year.</li>
+                <li> Divide by 4, discarding any fraction.</li>
+                <li> Add the day of the month.</li>
+                <li> Add the month's key value: JFM AMJ JAS OND 144 025 036 146</li>
+                <li> Subtract 1 for January or February of a leap year.</li>
+                <li> Add 0 for 1900's, 6 for 2000's, 4 for 1700's, 2 for 1800's; for other years, add or subtract multiples of 400.</li>
+                <li> Add the last two digits of the year.</li>
+                <li> Divide by 7 and take the remainder.</li>
+            </ol>
+
+            <p>You'll get a number between 0 and 6, which will correspond to one of the weekdays Sunday-Saturday</p>
+            
+        </div>
     </div>
 	<script src="script.js"></script>
   </body>
