@@ -1,3 +1,52 @@
 html {
     text-align: center;
+    background: #f4decb;
+    font-family: 'Candara', sans-serif;
 }
+
+body {
+    padding-top: 2em;
+}
+
+p {
+    color: #94618e
+}
+
+h1 {
+    color: #49274a
+}
+
+.button-group button {
+    font-family: 'Candara', sans-serif;
+    background: #f8eee7;
+    border: 1px solid #94618e;
+    color: #94618e;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.button-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.button-group button:hover {
+    background-color: white;
+}
+
+.submit-group button {
+    font-family: 'Candara', sans-serif;
+    background: #94618e;
+    border: 1px solid #94618e;
+    color: #f8eee7;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.submit-group span {
+    font-size: 1.5em;
+}
+
